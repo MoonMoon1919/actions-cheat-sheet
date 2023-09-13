@@ -21,6 +21,13 @@ mod tests {
 
         assert_eq!(sum, 6)
     }
+
+    #[test]
+    fn multiply() {
+        let sum = 4 * 2;
+
+        assert_eq!(sum, 8)
+    }
 }
 
 // Some unimportant change
