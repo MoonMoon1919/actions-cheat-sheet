@@ -10,6 +10,8 @@ jobs:
     if: ${{ github.event.issue.pull_request && contains(github.event.comment.body, '/test') }}
     name: "Run job"
     runs-on: ["ubuntu-latest"]
+    permissions:
+      checks: write
     steps:
       - name: checkout
         uses: actions/checkout@v3
