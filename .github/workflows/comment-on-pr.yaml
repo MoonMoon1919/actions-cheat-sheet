@@ -7,7 +7,7 @@ on:
 
 jobs:
   run_on_comment:
-    if: ${{ github.event.issue.pull_request }}
+    if: ${{ github.event.issue.pull_request && contains(github.event.comment.body, '/test') }}
     name: "Run job"
     runs-on: ["ubuntu-latest"]
     steps:
@@ -19,6 +19,6 @@ jobs:
           cargo build
 
       - name: "test"
-        if: contains(github.event.comment.body, '/test')
+        if:
         run: |
           cargo test
