@@ -24,9 +24,16 @@ mod tests {
 
     #[test]
     fn multiply() {
-        let sum = 4 * 2;
+        let result = 4 * 2;
 
-        assert_eq!(sum, 8)
+        assert_eq!(result, 8)
+    }
+
+    #[test]
+    fn division() {
+        let result = 4 / 2;
+
+        assert_eq!(result, 2)
     }
 }
 
