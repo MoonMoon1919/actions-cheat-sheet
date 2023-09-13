@@ -14,6 +14,13 @@ mod tests {
 
         assert_eq!(sum, 4)
     }
+
+    #[test]
+    fn more_math() {
+        let sum = 4 + 2;
+
+        assert_eq!(sum, 6)
+    }
 }
 
 // Some unimportant change
