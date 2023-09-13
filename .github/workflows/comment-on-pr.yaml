@@ -16,14 +16,6 @@ jobs:
       - name: checkout
         uses: actions/checkout@v3
 
-      - uses: LouisBrunner/checks-action@v1.6.1
-        id: start_checkrun
-        if: always()
-        with:
-          token: ${{ github.token }}
-          name: Run Tests
-          status: in_progress
-
       - name: "build"
         run: |
           cargo build
@@ -31,11 +23,3 @@ jobs:
       - name: "test"
         run: |
           cargo test
-
-      - uses: LouisBrunner/checks-action@v1.6.1
-        if: always()
-        with:
-          check_id: ${{ steps.start_checkrun.outputs.check_id }}
-          token: ${{ github.token }}
-          name: Run Tests
-          conclusion: ${{ job.status }}
