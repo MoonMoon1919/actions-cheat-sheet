@@ -19,18 +19,6 @@ jobs:
       - name: checkout
         uses: actions/checkout@v3
 
-      - uses: actions/github-script@v6
-        with:
-          script: |
-            github.rest.checks.create({
-              name: "Tests",
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              status: 'in_progress',
-              external_id: '62',
-              head_sha: context.sha
-            })
-
       - name: "build"
         run: |
           cargo build
@@ -39,14 +27,3 @@ jobs:
         run: |
           cargo test
 
-      - uses: actions/github-script@v6
-        with:
-          script: |
-            github.rest.checks.update({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              check_run_id: '62',
-              status: 'completed',
-              head_sha: context.sha
-              conclusion: 'success'
-            })
