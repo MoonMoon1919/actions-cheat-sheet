@@ -37,3 +37,15 @@ jobs:
       - name: "test"
         run: |
           cargo test
+
+      - uses: actions/github-script@v6
+        with:
+          script: |
+            github.rest.checks.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              status: completed,
+              external_id: 62,
+              head_sha: context.sha
+              conclusion: success
+            })
