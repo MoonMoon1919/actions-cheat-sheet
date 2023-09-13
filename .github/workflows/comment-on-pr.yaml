@@ -23,6 +23,7 @@ jobs:
         with:
           script: |
             github.rest.checks.create({
+              name: "Tests"
               owner: context.repo.owner,
               repo: context.repo.repo,
               status: 'in_progress',
@@ -41,11 +42,11 @@ jobs:
       - uses: actions/github-script@v6
         with:
           script: |
-            github.rest.checks.create({
+            github.rest.checks.update({
               owner: context.repo.owner,
               repo: context.repo.repo,
+              check_run_id: '62',
               status: 'completed',
-              external_id: '62',
               head_sha: context.sha
               conclusion: 'success'
             })
