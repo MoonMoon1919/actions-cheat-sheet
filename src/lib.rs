@@ -8,3 +8,5 @@ mod tests {
         assert_eq!(some_string, String::from("Hello, test!"))
     }
 }
+
+// Some unimportant change

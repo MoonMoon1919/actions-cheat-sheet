@@ -7,18 +7,31 @@ on:
 
 jobs:
   run_on_comment:
-    if: ${{ github.event.issue.pull_request }}
+    if: ${{ github.event.issue.pull_request && contains(github.event.comment.body, '/test') }}
     name: "Run job"
     runs-on: ["ubuntu-latest"]
     steps:
       - name: checkout
         uses: actions/checkout@v3
 
+      - uses: LouisBrunner/checks-action@v1.6.1
+        if: always()
+        with:
+          token: ${{ github.token }}
+          name: Run Tests
+          status: in_progress
+
       - name: "build"
         run: |
           cargo build
 
       - name: "test"
-        if: contains(github.event.comment.body, '/test')
         run: |
           cargo test
+
+      - uses: LouisBrunner/checks-action@v1.6.1
+        if: always()
+        with:
+          token: ${{ github.token }}
+          name: Run Tests
+          conclusion: ${{ job.status }}
