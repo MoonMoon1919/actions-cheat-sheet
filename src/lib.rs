@@ -10,23 +10,30 @@ mod tests {
 
     #[test]
     fn some_math() {
-        let sum = 2 + 2;
+        let result = 2 + 2;
 
-        assert_eq!(sum, 4)
+        assert_eq!(result, 4)
     }
 
     #[test]
     fn more_math() {
-        let sum = 4 + 2;
+        let result = 4 + 2;
 
-        assert_eq!(sum, 6)
+        assert_eq!(result, 6)
     }
 
     #[test]
     fn multiply() {
-        let sum = 4 * 2;
+        let result = 4 * 2;
 
-        assert_eq!(sum, 8)
+        assert_eq!(result, 8)
+    }
+
+    #[test]
+    fn divide() {
+        let result = 4 / 2;
+
+        assert_eq!(result, 2)
     }
 }
 
